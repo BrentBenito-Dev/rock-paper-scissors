@@ -2,12 +2,18 @@ let humanScore = 0;
 let computerScore = 0;
 let drawScore = 0;
 let roundCounter = 0;
+const btnRock = document.querySelector("#btnRock");
+const btnPaper = document.querySelector("#btnPaper");
+const btnScissors = document.querySelector("#btnScissors");
+
+const roundCounterBanner = document.querySelector("#round-counter");
+const announcementBar = document.querySelector("#announcement-bar");
+
+const humanScoreText = document.querySelector("#human-score");
+const computerScoreText = document.querySelector("#computer-score");
+const drawScoreText = document.querySelector("#draw-score");
 
 function playRound(){
-    const btnRock = document.querySelector("#btnRock");
-    const btnPaper = document.querySelector("#btnPaper");
-    const btnScissors = document.querySelector("#btnScissors");
-
     let userChoice = null; 
 
     btnRock.addEventListener("click", ()=>{
@@ -25,7 +31,6 @@ function playRound(){
         playGame(userChoice, getComputerChoice());
     });
 
-    console.log("Game Begin");
 }
 
 function getComputerChoice(){
@@ -76,11 +81,10 @@ function playGame(humanChoice, computerChoice){
         }else {
             console.log("\nThe Game is Draw!");
         }
-        roundCounter = 0;
-        humanScore, computerScore, drawScore = 0;
-
         // go to victory screen
+        victoryScreen();
     }
+    
 }
 
 function playAgain(){
@@ -88,28 +92,35 @@ function playAgain(){
 }
 
 function victoryScreen(){
-    
+    btnRock.disabled = true;
+    btnPaper.disabled = true;
+    btnScissors.disabled = true;
+    let winnerAnnouncement;
+
+    if (humanScore > computerScore){
+        winnerAnnouncement = "Congratulations, You Win!";
+    }else if(computerScore > humanScore){
+        winnerAnnouncement = "You Lost!";
+    }else{
+        winnerAnnouncement = "It's a Draw!"
+    }
+
+    announcementBar.textContent = winnerAnnouncement;
+
 }
 
 function roundCounterDisplay(roundCount){
-    const roundCounterBanner = document.querySelector("#round-counter");
     roundCounterBanner.textContent = "Round Count: " + roundCount;
 }
 
 function displayRoundResult(roundWinner){
-    const announcementBar = document.querySelector("#announcement-bar");
     announcementBar.textContent = roundWinner;
 }
 
 function displayScore(humanScore, computerScore, drawScore){
-    const humanScoreText = document.querySelector("#human-score");
-    const computerScoreText = document.querySelector("#computer-score");
-    const drawScoreText = document.querySelector("#draw-score");
-
     humanScoreText.textContent = "Human: " + humanScore;
     computerScoreText.textContent = "Computer: " + computerScore;
     drawScoreText.textContent = "Draw: " + drawScore;
-
 }
 
 playRound();
