@@ -13,6 +13,8 @@ const humanScoreText = document.querySelector("#human-score");
 const computerScoreText = document.querySelector("#computer-score");
 const drawScoreText = document.querySelector("#draw-score");
 
+const btnPlayAgain = document.querySelector("#btnPlayAgain");
+
 function playRound(){
     let userChoice = null; 
 
@@ -83,12 +85,35 @@ function playGame(humanChoice, computerChoice){
         }
         // go to victory screen
         victoryScreen();
+
     }
     
 }
 
 function playAgain(){
+    btnPlayAgain.style.visibility = "visible";
 
+    btnPlayAgain.addEventListener("click", ()=>{
+        humanScore = 0;
+        computerScore = 0;
+        drawScore = 0;
+        roundCounter = 0; 
+        roundCount = roundCounter + 1;
+
+        announcementBar.textContent = "";
+        roundCounterBanner.textContent = "Round Count: " + roundCount;
+
+        humanScoreText.textContent = "Human: " + humanScore;
+        computerScoreText.textContent = "Computer: " + computerScore;
+        drawScoreText.textContent = "Draw: " + drawScore;
+
+        btnRock.disabled = false;
+        btnPaper.disabled = false;
+        btnScissors.disabled = false;
+
+        btnPlayAgain.style.visibility = "hidden";
+
+    });
 }
 
 function victoryScreen(){
@@ -106,6 +131,7 @@ function victoryScreen(){
     }
 
     announcementBar.textContent = winnerAnnouncement;
+    playAgain();
 
 }
 
