@@ -5,24 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="game-header">
-        <p id = "round-counter">
+        <h1 id = "round-counter" class="round-count">
             Round Count: 1
-        </p>
-        <p id = "announcement-bar">
+        </h1>
+        <h2 id = "announcement-bar" class="announcement">
             
-        </p>
+        </h2>
     </div>
-
+    
     <div class = "player-selections" id="player-selections">
-        <button id = "btnRock">Rock</button>
-        <button id = "btnPaper">Paper</button>
-        <button id = "btnScissors">Scissors</button>
+        <button id = "btnRock" class="button">Rock</button>
+        <button id = "btnPaper" class="button">Paper</button>
+        <button id = "btnScissors" class="button">Scissors</button>
     </div>
 
-    <div class>
+    <div class="score-header">
+        <h2>Score:</h2>
+    </div>
+    <div class="scores">
         <p id = "human-score"></p>
         <p id = "computer-score"></p>
         <p id = "draw-score"></p>
@@ -35,3 +42,4 @@
 </html>
 
 <script src = "game.js"></script>
+
