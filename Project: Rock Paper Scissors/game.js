@@ -76,13 +76,6 @@ function playGame(humanChoice, computerChoice){
     roundCounter++
     
     if (roundCounter == 6){
-        if(humanScore > computerScore){
-            console.log("\nHuman Wins!");
-        }else if (computerScore > humanScore){
-            console.log("\nComputer Wins!");
-        }else {
-            console.log("\nThe Game is Draw!");
-        }
         // go to victory screen
         victoryScreen();
 
@@ -102,6 +95,7 @@ function playAgain(){
 
         announcementBar.textContent = "";
         roundCounterBanner.textContent = "Round Count: " + roundCount;
+        announcementBar.style.color="#1985A1";
 
         humanScoreText.textContent = "Human: " + humanScore;
         computerScoreText.textContent = "Computer: " + computerScore;
@@ -123,8 +117,10 @@ function victoryScreen(){
     let winnerAnnouncement;
 
     if (humanScore > computerScore){
+        announcementBar.style.color = "green";
         winnerAnnouncement = "Congratulations, You Win!";
     }else if(computerScore > humanScore){
+        announcementBar.style.color = "red";
         winnerAnnouncement = "You Lost!";
     }else{
         winnerAnnouncement = "It's a Draw!"
